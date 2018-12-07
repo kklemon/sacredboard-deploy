@@ -1,14 +1,14 @@
 scaredboard-deploy
 ==================
 
-**scaredboard-deploy** provides a reference deployment setup of the [sacredboard](https://github.com/chovanecm/sacredboard) dashboard for the [sacred](https://github.com/IDSIA/sacred) ML experiment management framework using [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/).
+**scaredboard-deploy** provides a dockerized reference deployment setup of the [sacredboard](https://github.com/chovanecm/sacredboard) dashboard for the [sacred](https://github.com/IDSIA/sacred) ML experiment management framework.
 
 Instructions
 ------------
 
 ### Prerequisites
 
-Docker and Docker Compose are required. Although the project only has been tested against Docker version 18.06.1-ce, most other recent Docker versions should be supported too.
+[Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) are required. Although the setup only has been explicitly tested against Docker version 18.06.1-ce, most other recent Docker versions should be supported too.
 
 ### Project Structure
 
@@ -16,15 +16,16 @@ A custom Docker image for sacredboard is defined in `Dockerfile.sacredboard`. Th
 
 `docker-compose.yml` defines two services. A sacredboard container based on the provided sacredboard image, publishing on the `5000` port and a MongoDB instance with persistent data storage in a volume, publishing on the host port `27017`.
 
-### Running
+### Installation & Running
 
-The whole stack can be started by executing
+To clone the project and start the sacredboard stack in detached mode, the following commands must be executed:
+```bash
+git clone https://github.com/kklemon/sacredboard-deploy.git
+cd sacredboard-deploy/
+docker-compose up -d
 ```
-docker-compose up
-```
-in the project's root folder.
 
-Finally the sacredboard dashboard should be available on `localhost:5000`.
+When the containers are spun up, sacredboard should be available on `localhost:5000`.
 
 ### Usage
 
